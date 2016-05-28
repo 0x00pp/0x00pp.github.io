@@ -1,0 +1,9 @@
+---
+layout: home
+title: 花花太郎
+---
+<ul class="list-group">
+  {% for post in site.posts %}
+  <li class="list-group-item title"><a href="{{post.baseurl}}{{post.url}}" >{{post.title}}</a></li>
+  {% endfor %}
+</ul>

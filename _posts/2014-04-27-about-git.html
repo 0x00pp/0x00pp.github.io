@@ -1,0 +1,125 @@
+---
+layout: default 
+title: Git 入门
+---
+<h1 align="center">Git 入门</h1>
+<h2>VCS</h2>
+<p>
+VCS(Version Control System),版本控制系统。
+</p>
+<p>
+版本控制，是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统，可以对任何类型的文件进行版本控制。
+</p>
+<ul>
+<li>CVCS(Centralized Version Control System),集中化的版本控制系统。诸如CVS，Subversion，Perforce，都有一个单一的集中管理的服务器，保存所有文件的修订版，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。
+</li>
+<li>DVCS(Distributed Version Control System),分布式版本控制系统。诸如Git，Bazaar以及Darcs等，客户端并不只提取最新版本的文件快照，而是把代码仓库完整地镜像下来。
+</li>
+</ul>
+<h2>Git</h2>
+<p>
+Git 是开源社区的作品。1991-2002年，Linux内核维护工作大部分都花在了提交补丁和保存归档的繁琐事物上。2002年，整个项目组开始启用分布式版本控制系统Bi BitKepper（由一家商业公司开发）来管理和维护代码。2005年，Linux社区与开发BitKeeper的商业公司的合作终止，Linux社区决定开发自己的版本控制系统－Git。
+</p>
+<p>
+对于任何一个文件，在Git内部只有三种状态：已提交（committed），已修改（modified）和已暂存（staged）。已提交表示文件已经被安全地保存在本地数据库中了；已修改表示修改了某个文件，但是还没有提交保存；已暂存表示把已修改的文件放在下次提交时要保存的清单中。
+</p>
+<h2>初次运行Git前的配置</h2>
+<ul>
+<li><em>/etc/gitconfig</em>文件：系统中对所有用户都普遍适用的配置。若适用git config时用--system选项，读写的就是这个文件。
+</li>
+<li><em>~/.gitconfig</em>文件：用户配置文件只适用于该用户。若适用git config时用--global选项，读写的就是这个文件。
+</li>
+<li><em>yourproject/.gitignore</em>文件：忽略项目目录下的一些文件。（不会跟踪）</li>
+<li>
+当前项目的git目录中的配置文件（也就是工作目录中的.git/config文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以.git/config里的配置会覆盖/etc/gitconfig中的同名变量。
+</li>
+</ul>
+<p>
+一些常用的配置命令：<br />
+$ git config --global user.name "John Doe"（配置用户名）<br />
+$ git config --global user.email johndoe@example.com（配置用户邮箱）<br />
+$ git config --global core.editor emacs（配置用户默认的编辑器，Vi,Vim,Emacs等）<br />
+查看已有的配置信息：<br />
+$ git config --list<br />
+直接查阅某个环境变量的设定，只要把特定的名字跟在git后面即可：<br />
+$ git config user.name
+</p>
+<h2>常用git命令</h2>
+<p>
+换取帮助：<br />
+$ git help (verb)<br />
+$ git (verb) --help<br />
+$ man git-(verb)<br />
+比如要学习config命令可以怎么用，运行：<br />
+$ git help config
+</p>
+<h2>取得项目的Git仓库</h2>
+<p>
+有两种取得Git项目仓库的方法。第一种时在现存目录下，通过倒入所有文件来创建新的Git仓库。第二种时从已有的Git仓库克隆出一个新的镜像仓库来。
+</p>
+<ul>
+<li>
+$ git init #对现有的某个项目开始用Git管理，只需到此项目所在的目录，执行该命令<br />
+</li>
+<li>
+$ git clone [url] #克隆远端的Git仓库，包括了所有版本的数据
+</li>
+</ul>
+<p>
+Git支持多种数据传输协议。<em>git://</em>协议，<em>http(s)://</em>或者<em>user@server:/path.git</em>表示的SSH传输协议。
+</p>
+<h2>基本操作</h2>
+<h4>检查当前文件状态</h4>
+<p>
+$ git status
+</p>
+<h4>跟踪新文件</h4>
+<p>
+$ git add <em>file or directory</em> # add file into staged area
+</p>
+
+<h4>查看尚未<em>暂存</em>的文件的更新<h4>
+<p>
+$ git diff
+</p>
+<h4>比较暂存文件与上次提交是的快照之间的差异</h4>
+<p>
+$ git diff --cahed<br />
+$ git diff --staged
+</p>
+<h4>提交更新</h4>
+<p>
+$ git commit -m "Your comment" #提交暂存区的更新（不包括没有git add的文件）
+</p>
+<h4>提交所有跟踪文件</h4>
+<p>
+$ git commit -a -m 'Your comment'
+</p>
+<h4>移除文件</h4>
+<p>
+$ rm <em>yourfile</em> #吧<em>yourfile</em>从暂存区移除（并未停止跟踪，更没有从工作目录中删除该文件）
+</p>
+<p>
+$ git rm <em>yourfile</em> #将已跟踪但未暂存的文件删除(停止跟踪的意思）
+</p>
+<p>
+$ git -f rm <em>yourfile</em> #将已暂存的文件删除（停止跟踪）
+</p>
+<p>
+$ git rm --cached <em>yourfile</em> #从Git仓库中删除
+</p>
+<h4>文件改名</h4>
+<p>
+$ git mv file_from file_to
+</p>
+<h4>查看提交历史</h4>
+<p>
+$ git log #简单的概括
+</p>
+<p>
+$ git log -p -2 # -p选项展开显示每次提交的内容差异，-2则仅显示最近的两次更新
+</p>
+<h4>修改最后一次提交</h4>
+<p>
+$ git commit --amend
+</p>

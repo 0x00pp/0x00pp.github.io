@@ -1,0 +1,164 @@
+---
+layout: default
+title: Ruby 基础
+---
+
+<h1 align="center">Starting:Ruby's Bascis</h1>
+<h2>Intalling Ruby</h2>
+<p>
+My OS(operating system) is OS X,so ruby has been already been installed .The version of Ruby I use is 2.0.0.(You can you "ruby -v" in Terminal to see your version of ruby.)
+</P>
+
+<h2>Running Ruby</h2>
+<p>
+There are serval ways to run ruby programms.
+<ul>
+<li>ruby:Just simply  type at the shell prompt and Ctrl-D to stop.</li>
+<li>irb: irb is a Ruby shell.You rub irb from command line.</li>
+<li>ruby yourprog.rb: Just put your ruby code in one or more file.Emacs ,vi and Sublime are good editors for us.</li>
+</ul>
+</p>
+
+<h2>Ruby Documentation</h2>
+<p>
+The standard library that comes with Ruby now contains more than 9,000 methods.People use RDoc or ri to document and view them.
+</p>
+<ul>
+<li>RDoc: a system to document Ruby libraries.</li>
+<li>ri: a local command-line viewer for the same documentation</li>
+</ul>
+
+<h2>Ruby Names</h2>
+<p>
+Ruby uses a conventon that may seem strange at first:the first characters of a name indicate how the name is used.
+</p>
+<table frame="hsides">
+  <tr>
+    <th>object</th>
+    <th>example</th>
+  </tr>
+  <tr>
+    <td>Local  Varible:<br />
+        Method Name:<br />
+        Method Parameter:</br />
+     </td>
+    <td>name fish_and_chips x_axis thx1138 _x _26</td>
+  </tr>
+  <tr>
+    <td>Instance Varible:</td>
+    <td>@name @point_1 @X @_ @plan9</td>
+  </tr>
+  <tr>
+    <td>Class Variable:</td>
+    <td>@@total @@symtab @@N @@x_pos @@SINGLE</td>
+  </tr>
+  <tr>
+    <td>Global Varible:</td>
+    <td>$debug $CUSTOMER $_ $plan9 $Global</td>
+  </tr>
+  <tr>
+    <td>Class Name:</td>
+    <td>String ActiveRecord MyClass</td>
+  </tr>
+  <tr>
+    <td>Constant Name:</td>
+    <td>FEET_PER_MILE DEBUG</td>
+  </tr>
+</table>
+
+<h2>Ruby‘s Data Structure</h2>
+<ul>
+<li>Array:collections of any type of object indexed with integer.eg:[1,2,3],['a','b','c'],[1,[1,'a'],a].</li>
+<li>Hash:collections of any type of object indexed with any object. eg:{1 => 'one',2 => 'two',3 => 'three'}.</li>
+<li>String:</li>
+<li>Integer:</li>
+<li>Float:</li>
+<li>Complex:</li>
+</ul>
+
+<h2>Symbols</h2>
+
+<h2>Control Structures</h2>
+<ul>
+<li>if:</li>
+<li>unless:</li>
+</ul>
+
+<h2>Loop Structures</h2>
+<ul>
+<li>while:</li>
+<li>for:</li>
+<li>loop:</li>
+</ul>
+
+<h2>Regular Expression</h2>
+<ul>
+<li>/Perl|Python/</li>
+<li>/P(erl|ython)/</li>
+<li>/\d\d:\d\d:\d\d/ # a time such as 12:34:56</li>
+<li>/Perl.*Python/ # Perl,zero or more other chars,then Python</li>
+<li>/Perl Python/ # Perl,a space,and Python</li>
+<li>/Perl *Python/ # Perl,one or more spaces,and Python</li>
+<li>Perl +Python/ # Perl,one or more spaces,and Python</li>
+<li>/Perl\s+Python/ # Perl,whitespace characters,then Python</li>
+<li>Ruby (Perl|Python) # Ruby,a space,and either Perl or Python</li>
+<li>/ab+c/ matches a string containing an a followedby one or more  b's,followed by a c.</li>
+<li>/ab*c/ creates a regular expression that matches one a,zero or moreb's,and one c.</li>
+<li>\s matches a whitespace character(space,tab,newline,and so on).</li>
+<li>\d matches any digit.</li>
+<li>\w matches any character that may appear in a typical word.</li>
+<li>. matches (almost) any character.</li>
+</ul>
+
+<h2>Blocks and Iterators</h2>
+<p>
+Code blocks are just chunks of code between braces or between do and end.
+</p>
+<ul>
+<li>
+<code>
+{ puts "Hello"}
+</code>
+</li>
+<br />
+<li>
+<code>
+do<br />
+  club.enroll(person)<br />
+  person.socialize<br />
+end
+</code>
+</li>
+<li>
+<code>
+def call_block<br />
+puts "Start of method"<br />
+yield<br />
+yield<br />
+puts "End of method"<br />
+end<br />
+</code>
+call_block { puts "In the block"}<br />
+produces:<br />
+Start of method<br />
+In the block<br />
+In the block<br />
+End of method
+</li>
+<li>
+<code>
+def who_says_what<br />
+yield("Dave","hello")<br />
+yield("Andy","goodbye")<br />
+end<br />
+</code>
+who_says_what {|person,phrase| puts"#{person} says #{phrase}"}<br />
+produces:<br />
+Dave says hello<br />
+Andy says goodbye
+</li>
+
+<p>
+Use braces for single-line blocks and do/end for multiline blocks.
+</p>
+

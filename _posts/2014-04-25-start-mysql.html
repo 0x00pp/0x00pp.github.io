@@ -1,0 +1,81 @@
+---
+layout: default
+title: MySQL 基础
+---
+<h1 align="center">MySQL 基础</h1>
+<h2>MySQL的体系结构</h2>
+<p>
+MySQL是客户/服务器体系结构。
+</p>
+<ul>
+<li> 服务器程序：mysqld</li>
+<li>客户端程序：mysql，mysqldump，mysqladmin,mysqlimport,mysqlshow</li>
+</ul>
+
+<h2>启动/关闭数据库：</h2>
+<p>
+启动服务：<br />
+$ sudo /usr/local/mysql/support-files/mysql.server start
+</p>
+<p>
+关闭服务:<br />
+$ sudo /usr/local/mysql/support-files/mysql.server stop
+</p>
+
+<h2>连接/断开接数据库</h2>
+<p>
+$ mysql -h hostname -u username -p
+</p>
+<p>
+连接本地主机：<br />
+$ mysql -u username -p
+</p>
+<p>
+断开连接：<br />
+exit
+</p>
+
+<h2>执行SQL语句</h2>
+<ul>
+<li>mysql>SELECT NOW();</li>
+<li>mysql>SELECT NOW()\g</li>
+<li>mysql>SELECT NOW()\G(竖排显示结果，每行一个值)</li>
+<li>mysql> SELECT NOW(),USER(),VERSION();</li>
+<li>mysql> SELECT NOW(),VERSION()\c(\c是取消已经输入的命令)</li>
+<li>% mysql < myscript.sql(把命令写成一个脚本去执行)</li>
+</ul>
+<p>
+注：命令（例如SELECT)和函数（例如USER(),NOW(),VERSION())不区分大小写。
+</p>
+
+<h2>创建数据库</h2>
+<p>
+<ol>
+<li>创建（初始化）一个数据库。</li>
+<li>在数据库里创建各种表。</li>
+<li>对数据库表里的数据进行插入，检索，修改，删除等操作。</li>
+</ol>
+SQL语句：<br />
+mysql> CREATE DATABASE sampdb;
+</p>
+
+<h2>创建数据表</h2>
+<p>
+CREATE TABLE tbl_name (column_specs);
+</P>
+<p>
+CREATE TABLE语句中的数据列定义由以下几个部分组成：数据列的名字，数据类型和一些属性。
+</p>
+
+<h2>一些常用的数据类型和属性</h2>
+<ul>
+<li>VARCHAR(n):可变字符（串），最多n个字符。</li>
+<li>DATE:日期。标准形式：CCYY-MM-DD。</li>
+<li>INT:整数。</li>
+<li>UNSIGENED:不允许出现负数。</li>
+<li>NULL:无数据。（可以为空值的意思）</li>
+<li>NOT NULL:与NULL对应，不得为空值。</li>
+<li>AUTO_INCREMENT:表示数据列里存放的是序列号，会为新插入输入自动加一付值。</li>
+<li>PRIMARY KEY:主键，要求值必须唯一。隐含由NOT NULL属性。</li>
+
+

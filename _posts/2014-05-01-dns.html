@@ -1,0 +1,78 @@
+---
+layout: default
+title: DNS原理
+---
+<h1 align="center">DNS原理</h1>
+<h2>与DNS相关的名词解释</h2>
+<ul>
+<li><em>DNS</em>:Domain Name System,域名系统。</li>
+<li><em>hostname</em>:主机名。</li>
+<li><em>domain name</em>:域名。</li>
+<li><em>BIND</em>:Berkeley Internet Name Domain，实现DNS协议的一套软件。特点：阶层式管理主机名对应IP的系统。</li>
+<li><em>FQDN</em>:Full Qualified Domain Name，由hostname与domain name组成。</li>
+</ul>
+<p>
+For example:主机名为www的有：www.google.com,www.seednet.net,www.hebut.edu.cn等等。
+</p>
+<h2>与DNS相关的配置文件</h2>
+<ul>
+<li><em>/etc/hosts</em>:主机名与IP对应的记录文件</li>
+<li><em>/etc/resolv.conf</em>:DNS服务器地址</li>
+</ul>
+<h2>DNS的分层架构</h2>
+<ul>
+<li><em>TLDs</em>:Top Level Domains,顶级域名。</li>
+<li><em>gTLD</em>:Generic TLDs,一般顶级域名，例如.com,.org,.gov等。</li>
+<li><em>ccTLD</em>:Country Code TLDs,地区顶级域名，例如.uk,.jp,.cn等。</li>
+</ul>
+
+<table cellpadding="10" border="1" width="100%" rules="all">
+<tbody>
+<tr>
+<th>名称</th>
+<th>代表意义</th>
+</tr>
+<tr>
+<td>com</td>
+<td>公司，行号，企业</td>
+</tr>
+<tr>
+<td>org</td>
+<td>组织，机构</td>
+</tr>
+<tr>
+<td>edu</td>
+<td>教育单位</td>
+</tr>
+<tr>
+<td>gov</td>
+<td>政府单位</td>
+</tr>
+<tr>
+<td>net</td>
+<td>网络，通信</td>
+</tr>
+<tr>
+<td>mil</td>
+<td>军事单位</td>
+</tr>
+</tbody>
+</table>
+<h2>通过DNS查询主机名IP的流程</h2>
+<p>以 www.hebut.edu.cn为例进行解释</p>
+<ol>
+<li>收到用户请求,先查看本身有没有记录，若武则向.(root)查询。</li>
+<li>向顶层.(root)查询。</li>
+<li>向第二层的.cn服务器查询。</li>
+<li>向第三层的.edu.cn服务器查询。</li>
+<li>向第四层.hebut.edu.cn服务器查询</li>
+<li>记录缓存并回报用户</li>
+</ol>
+<h2>分层DNS的优势</h2>
+<ul>
+<li>主机名的修改仅需更改自己的DNS即可，不需要通知其他人。</li>
+<li>DNS服务器对主机名解析结果的缓存时间。</li>
+<li>可持续向下授权。</li>
+</ul>
+<h2>DNS使用的port number</h2>
+<p>TCP/UDP 53</p>

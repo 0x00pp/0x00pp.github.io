@@ -1,0 +1,41 @@
+body {
+    font-family: STFangSong, Helvetica, Arial, Vernada, Tahoma, STXihei, "Microsoft YaHei", "Songti SC", SimSun, Heiti, sans-serif;
+    font-size: 18px;
+    margin: 5% 20% 5% 20%;
+    padding: 2% 5% 5% 5%;
+    width: 50%;
+    line-height: 150%;
+     /* border: 1px solid LightGray; */
+}
+h1 {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    target: _blank;
+}
+
+.title {
+    cursor: pointer;
+}
+
+li.title:hover {
+    background-color: #eee;
+}
+
+.panel {
+    border-radius: 0;
+}
+
+.panel-default > .panel-heading {
+	       background-image: none;
+	       background-color: #fff;
+}
+
+.navbar-default {
+		background-image: none;
+		background-color: #fff;
+  box-shadow: none;
+}
